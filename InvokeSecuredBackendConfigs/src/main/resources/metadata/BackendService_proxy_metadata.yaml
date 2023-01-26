@@ -1,0 +1,10 @@
+---
+key: "BackendService_proxy-1.0.0"
+name : "BackendService"
+displayName : "BackendService"
+description: "Sample Proxy Service"
+version: "1.0.0"
+serviceUrl: "https://{MI_HOST}:{MI_PORT}/services/BackendService"
+definitionType: "WSDL1"
+securityType: "BASIC"
+mutualSSLEnabled: false

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<endpoint name="EndpointBackend" xmlns="http://ws.apache.org/ns/synapse">
+    <address uri="https://localhost:8244/services/BackendService">
+        <enableSec policy="gov:/FrondEndServicePolicies/FrontEndPolicy.xml"/>
+        <suspendOnFailure>
+            <initialDuration>-1</initialDuration>
+            <progressionFactor>1.0</progressionFactor>
+        </suspendOnFailure>
+        <markForSuspension>
+            <retriesBeforeSuspension>0</retriesBeforeSuspension>
+        </markForSuspension>
+    </address>
+</endpoint>

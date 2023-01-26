@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxy name="BackendService" startOnLoad="true" transports="http https" xmlns="http://ws.apache.org/ns/synapse">
+    <target>
+        <inSequence>
+            <payloadFactory media-type="xml">
+                <format>
+                    <root xmlns="">
+                        <customFieldOne>$1</customFieldOne>
+                        <customFieldTwo>$2</customFieldTwo>
+                    </root>
+                </format>
+                <args>
+                    <arg value="value 1"/>
+                    <arg value="value 2"/>
+                </args>
+            </payloadFactory>
+            <respond/>
+        </inSequence>
+        <outSequence/>
+        <faultSequence/>
+    </target>
+    <policy key="gov:endpoints/BackEndPolicy.xml"/>
+    <parameter name="ScenarioID">scenario5</parameter>
+    <enableSec/>
+</proxy>

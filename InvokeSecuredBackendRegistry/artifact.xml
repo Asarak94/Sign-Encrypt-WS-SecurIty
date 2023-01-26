@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><artifacts>
+    <artifact name="FrontEndPolicy.xml" groupId="com.example.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseIntegrator">
+        <item>
+            <file>FrontEndPolicy.xml</file>
+            <path>/_system/governance/FrondEndServicePolicies</path>
+            <mediaType>application/wspolicy+xml</mediaType>
+            <properties/>
+        </item>
+    </artifact>
+    <artifact name="BackEndPolicy.xml" groupId="com.example.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseIntegrator">
+        <item>
+            <file>BackEndPolicy.xml</file>
+            <path>/_system/governance/endpoints</path>
+            <mediaType>application/wspolicy+xml</mediaType>
+            <properties/>
+        </item>
+    </artifact>
+</artifacts>

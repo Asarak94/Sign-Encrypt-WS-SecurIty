@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsp:Policy xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" wsu:Id="SigEncr">
+   <wsp:ExactlyOne>
+      <wsp:All>
+         <sp:AsymmetricBinding>
+            <wsp:Policy>
+               <sp:InitiatorToken>
+                  <wsp:Policy>
+                     <sp:X509Token sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient">
+                        <wsp:Policy>
+                           <sp:RequireThumbprintReference />
+                           <sp:WssX509V3Token10 />
+                        </wsp:Policy>
+                     </sp:X509Token>
+                  </wsp:Policy>
+               </sp:InitiatorToken>
+               <sp:RecipientToken>
+                  <wsp:Policy>
+                     <sp:X509Token sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/Never">
+                        <wsp:Policy>
+                           <sp:RequireThumbprintReference />
+                           <sp:WssX509V3Token10 />
+                        </wsp:Policy>
+                     </sp:X509Token>
+                  </wsp:Policy>
+               </sp:RecipientToken>
+               <sp:AlgorithmSuite>
+                  <wsp:Policy>
+                     <sp:Basic256 />
+                  </wsp:Policy>
+               </sp:AlgorithmSuite>
+               <sp:Layout>
+                  <wsp:Policy>
+                     <sp:Strict />
+                  </wsp:Policy>
+               </sp:Layout>
+               <sp:IncludeTimestamp />
+               <sp:OnlySignEntireHeadersAndBody />
+            </wsp:Policy>
+         </sp:AsymmetricBinding>
+<sp:SignedParts>
+          <sp:Header Name="Timestamp" Namespace="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"/>
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing"/>
+	      <sp:Header Name="Body" Namespace="http://schemas.xmlsoap.org/soap/envelope/" />
+          <sp:Body/>
+        </sp:SignedParts>
+         <ramp:RampartConfig xmlns:ramp="http://ws.apache.org/rampart/policy">
+            <ramp:userCertAlias>wso2carbon1</ramp:userCertAlias>
+            <ramp:encryptionUser>backend</ramp:encryptionUser>
+            <ramp:passwordCallbackClass>org.wso2.samples.pwcb.PWCBHandler</ramp:passwordCallbackClass>
+            <ramp:signatureCrypto>
+               <ramp:crypto provider="org.apache.ws.security.components.crypto.Merlin">
+                  <ramp:property name="org.apache.ws.security.crypto.merlin.keystore.type">JKS</ramp:property>
+                  <ramp:property name="org.apache.ws.security.crypto.merlin.file">/home/asara/WSO2/setups/ws-securtiy/signandencrypt/EISetup/artifacts/SampleWS/CA_KEYSTORE/newkeystore1.jks</ramp:property>
+                  <ramp:property name="org.apache.ws.security.crypto.merlin.keystore.password">wso2carbon</ramp:property>
+               </ramp:crypto>
+            </ramp:signatureCrypto>
+            <ramp:encryptionCypto>
+               <ramp:crypto provider="org.apache.ws.security.components.crypto.Merlin">
+                  <ramp:property name="org.apache.ws.security.crypto.merlin.keystore.type">JKS</ramp:property>
+                  <ramp:property name="org.apache.ws.security.crypto.merlin.file">/home/asara/WSO2/setups/ws-securtiy/signandencrypt/EISetup/artifacts/SampleWS/CA_KEYSTORE/newkeystore1.jks</ramp:property>
+                  <ramp:property name="org.apache.ws.security.crypto.merlin.keystore.password">wso2carbon</ramp:property>
+               </ramp:crypto>
+            </ramp:encryptionCypto>
+         </ramp:RampartConfig>
+      </wsp:All>
+   </wsp:ExactlyOne>
+</wsp:Policy>
